@@ -9,7 +9,7 @@ const Order = ({ token }) => {
   const fetchAllOrders = async () => {
     if (!token) return null
     try {
-      const response = await axios.post(backendUrl + '/api/orders/list', {}, { headers: {  Authorization: `Bearer ${token}` } })
+      const response = await axios.post(`${backendUrl}/api/orders/list`, {}, { headers: {  Authorization: `Bearer ${token}` } })
       console.log(response.data)
 
       if (response.data.success) {
@@ -27,7 +27,7 @@ const Order = ({ token }) => {
     try {
 
       const response = await axios.post(
-        backendUrl + '/api/orders/status',
+        `${backendUrl}/api/orders/status`,
         { orderId, status: e.target.value },
         { headers: {  Authorization: `Bearer ${token}` } }
       );

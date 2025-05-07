@@ -4,6 +4,7 @@ const connectDB = require('./config/mongoDB');
 connectDB();
 const cors = require('cors');
 const dotenv = require('dotenv');
+const path = require('path');
 dotenv.config();
 const cloudinary = require('./config/cloudinary');
 const userRouter = require('./routes/userRoute.js');
