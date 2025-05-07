@@ -15,16 +15,18 @@ const PORT = process.env.PORT || 3000;
 const allowedOrigins = [process.env.FRONTEND_URL1, process.env.FRONTEND_URL2];
 
 const corsOptions = {
-    origin: function (origin, callback) {
-      if (!origin || allowedOrigins.indexOf(origin) !== -1) {
-        callback(null, true);
-      } else {
-        callback(new Error('Not allowed by CORS'));
-      }
-    },
-    methods: ['GET', 'POST', 'PUT', 'DELETE'], 
-    allowedHeaders: ['Content-Type', 'Authorization', 'token'], 
-  };
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true, 
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'token'],
+};
+
   
 app.use(cors(corsOptions)); 
 app.use(express.json());
